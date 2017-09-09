@@ -9,7 +9,13 @@ const polly = new Polly({
   region: process.env.AWS_REGION
 })
 
-module.exports = function getPollyTTSURL(Text) {
+// @param string OutputFormat   should be mp3 or pcm. defaults to mp3
+module.exports = function getPollyTTSURL(Text, OutputFormat) {
+  if(OutputFormat !== 'pcm')
+    OutputFormat = 'mp3'
+
+  const SampleRate = (OutputFormat === 'mp3') ? '22050' : '16000'
+
   const halfHourInSeconds = 30 * 60
 
   const TextType = Text.indexOf('<speak>') < 0 ? 'text' : 'ssml'
@@ -19,11 +25,11 @@ module.exports = function getPollyTTSURL(Text) {
   // pcm is in signed 16-bit, 1 channel (mono), little-endian format
   // https://github.com/aws/aws-sdk-js/blob/master/clients/polly.d.ts#L237
   return polly.getSynthesizeSpeechUrl({
-    OutputFormat: 'mp3',  // mp3, pcm
+    OutputFormat,
 
     // Valid values for pcm are "8000" and "16000" The default value is "16000"
     // 22050 for mp3
-    SampleRate: '22050',
+    SampleRate,
 
     TextType,  // ssml | text
 

@@ -5,9 +5,9 @@ const getPollyTTSURL = require('./get-polly-tts-url')
 //const redis          = require('redis')
 
 
-module.exports = async function tts(text, cache=true) {
+module.exports = async function tts(text, encoding, cache=true) {
   const [ audioURL, speechMarks ] = await Promise.all([
-    getPollyTTSURL(text),
+    getPollyTTSURL(text, encoding),
     getPollyTTSM(text)
   ])
 
