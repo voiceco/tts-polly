@@ -12,7 +12,7 @@ const tts = require('tts-polly')
 const [ audioURL, speechMarks ] = await tts('Here is some text I would like Polly to say.')
 ```
 
-You can also specify the type of audio encoding you'd like. (`pcm` or `mp3`) defaults to `mp3`.
+You can also specify pcm as the audio encoding.
 
 ```javascript
 // audioURL is a 16khz pcm audio file
