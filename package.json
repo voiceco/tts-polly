@@ -1,0 +1,24 @@
+{
+  "name": "tts-polly",
+  "version": "1.0.0",
+  "private": true,
+  "description": "get text-to-speech audio and speechmarks timing data from Amazon Polly",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voiceco/tts-polly.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/voiceco/tts-polly/issues"
+  },
+  "homepage": "https://github.com/voiceco/tts-polly#readme",
+  "dependencies": {
+    "aws-sdk": "^2.112.0",
+    "bluebird": "^3.5.0"
+  }
+}
